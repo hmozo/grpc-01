@@ -19,7 +19,7 @@ const createTodo= (call, callback)=>{
 }
 
 const readTodos= (call, callback)=>{
-
+    callback(null, {'items': todos})
 }
 
 server.addService(todoPackage.Todo.service, {
