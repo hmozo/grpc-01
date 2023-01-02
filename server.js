@@ -22,9 +22,15 @@ const readTodos= (call, callback)=>{
     callback(null, {'items': todos})
 }
 
+const readTodosStream= (call, callback)=>{
+    todos.forEach(t=>call.write(t))
+    call.end()
+}
+
 server.addService(todoPackage.Todo.service, {
     'createTodo': createTodo,
-    'readTodos': readTodos
+    'readTodos': readTodos,
+    'readTodosStream': readTodosStream
 })
 
 server.start()
